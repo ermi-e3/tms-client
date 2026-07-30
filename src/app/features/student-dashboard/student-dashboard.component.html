@@ -1,14 +1,14 @@
-<div class="dashboard">
+<!-- <div class="dashboard">
   <h1>Welcome, {{ studentName() }}</h1>
   <p>Credits Earned: {{ earnedCredits() }}</p>
   <p>Graduation Status: {{ graduationStatus() }}</p>
   <button (click)="registerForClass()">Register for a Class (+3 credits)</button>
-</div>
+</div> -->
 
 <!-- <h2>Available Courses</h2>
 <tms-course-card [course]="sampleCourse" (enrollClicked)="handleEnroll($event)" /> -->
 
-<h2>Course Catalog</h2>
+<!-- <h2>Course Catalog</h2>
 @if (availableCourses().length === 0) {
   <div class="empty-state">
     <p>No courses are available this term. Check back during registration.</p>
@@ -26,4 +26,113 @@
   <p class="selection-hint" role="status">
     Last enrollment request: <strong>{{ picked.title }}</strong> ({{ picked.code }})
   </p>
+} -->
+
+<!-- <h2>Course Catalog</h2>
+@if (coursesResource.isLoading()) {
+  <div class="spinner">Fetching courses from the server...</div>
+} @else if (coursesResource.error()) {
+  <div class="error">Could not load courses. Make sure your .NET API is running.</div>
+} @else {
+  <div class="grid">
+    @for (course of coursesResource.value()!; track course.id) {
+      <tms-course-card
+        [course]="course"
+        (enrollClicked)="handleEnroll($event)"
+      />
+    } @empty {
+      <p>No courses are available this term.</p>
+    }
+  </div>
+} -->
+
+<!-- <h2 class="catalog-title">Course Catalog</h2>
+
+@if (coursesResource.isLoading()) {
+  <div class="status-card loading">
+    <div class="spinner"></div>
+    <p>Fetching courses from the server...</p>
+  </div>
+} @else if (coursesResource.error()) {
+  <div class="status-card error">
+    <h3>Unable to load courses</h3>
+    <p>Make sure your .NET API is running and try again.</p>
+  </div>
+} @else {
+  <div class="grid">
+    @for (course of coursesResource.value()!; track course.id) {
+      <tms-course-card [course]="course" (enrollClicked)="handleEnroll($event)" />
+    } @empty {
+      <div class="empty-state">
+        <p>No courses are available this term.</p>
+      </div>
+    }
+  </div>
+} -->
+
+<h2 class="catalog-title">Course Catalog</h2>
+
+@if (coursesResource.isLoading()) {
+  <div class="status-card loading">
+    <div class="spinner"></div>
+    <p>Fetching courses from the server...</p>
+  </div>
+} @else if (coursesResource.error()) {
+  <div class="status-card error">
+    <h3>Unable to load courses</h3>
+    <p>Make sure your .NET API is running and try again.</p>
+  </div>
+} @else {
+  <div class="table-container">
+    <table class="course-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Course Code</th>
+          <th>Course Title</th>
+          <th>Capacity</th>
+          <th>Enrolled</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (course of coursesResource.value()!; track course.id) {
+          <tr>
+            <td>{{ course.id }}</td>
+            <td>{{ course.code }}</td>
+            <!-- <td>{{ course.title }}</td> -->
+            <td>
+              <a class="course-link" [routerLink]="['/courses', course.id]">
+                {{ course.title }}
+              </a>
+            </td>
+            <td>{{ course.maxCapacity }}</td>
+            <td>{{ course.enrollmentCount }}</td>
+
+            <td>
+              <span class="badge" [class.closed]="course.enrollmentCount >= course.maxCapacity">
+                {{ course.enrollmentCount >= course.maxCapacity ? 'Full' : 'Open' }}
+              </span>
+            </td>
+
+            <td>
+              <button
+                class="enroll-btn"
+                (click)="handleEnroll(course)"
+                [disabled]="course.enrollmentCount >= course.maxCapacity"
+              >
+                Enroll
+              </button>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="7" class="empty">No courses are available this term.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 }

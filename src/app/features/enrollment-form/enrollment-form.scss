@@ -1,0 +1,331 @@
+// :host {
+//   display: block;
+//   max-width: 750px;
+//   margin: 2rem auto;
+//   padding: 2rem;
+// }
+
+// h2 {
+//   margin-bottom: 1.5rem;
+//   color: #1f2937;
+//   font-size: 2rem;
+//   font-weight: 700;
+// }
+
+// h3 {
+//   margin: 2rem 0 1rem;
+//   color: #374151;
+// }
+
+// form {
+//   background: #ffffff;
+//   padding: 2rem;
+//   border-radius: 14px;
+//   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+// }
+
+// label {
+//   display: block;
+//   margin: 1rem 0 45rem;
+//   font-weight: 600;
+//   color: #374151;
+// }
+
+// input,
+// textarea {
+//   width: 100%;
+//   padding: 0.85rem 1rem;
+//   border: 1px solid #d1d5db;
+//   border-radius: 8px;
+//   font-size: 1rem;
+//   font-family: inherit;
+//   transition: all 0.2s ease;
+//   box-sizing: border-box;
+// }
+
+// textarea {
+//   resize: vertical;
+//   min-height: 120px;
+// }
+
+// input:focus,
+// textarea:focus {
+//   outline: none;
+//   border-color: #2563eb;
+//   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+// }
+
+// .error {
+//   display: block;
+//   color: #dc2626;
+//   font-size: 0.875rem;
+//   margin-top: 0.4rem;
+//   margin-bottom: 0.5rem;
+// }
+
+// .success {
+//   background: #dcfce7;
+//   color: #166534;
+//   border-left: 5px solid #22c55e;
+//   padding: 1rem 1.25rem;
+//   border-radius: 10px;
+//   font-weight: 600;
+// }
+
+// .backup-row {
+//   display: flex;
+//   gap: 0.75rem;
+//   align-items: center;
+//   margin-bottom: 0.75rem;
+// }
+
+// .backup-row input {
+//   flex: 1;
+// }
+
+// button {
+//   cursor: pointer;
+//   border: none;
+//   border-radius: 8px;
+//   padding: 0.8rem 1.3rem;
+//   font-size: 0.95rem;
+//   font-weight: 600;
+//   transition: all 0.2s ease;
+// }
+
+// button[type='submit'] {
+//   width: 100%;
+//   margin-top: 1rem;
+//   background: #2563eb;
+//   color: white;
+// }
+
+// button[type='submit']:hover:not(:disabled) {
+//   background: #1d4ed8;
+// }
+
+// button[type='submit']:disabled {
+//   background: #9ca3af;
+//   cursor: not-allowed;
+// }
+
+// button[type='button'] {
+//   background: #f3f4f6;
+//   color: #374151;
+// }
+
+// button[type='button']:hover {
+//   background: #e5e7eb;
+// }
+
+// .backup-row button {
+//   background: #ef4444;
+//   color: white;
+//   white-space: nowrap;
+// }
+
+// .backup-row button:hover {
+//   background: #dc2626;
+// }
+
+// hr {
+//   margin: 2rem 0;
+//   border: none;
+//   border-top: 1px solid #e5e7eb;
+// }
+
+// @media (max-width: 640px) {
+//   .backup-row {
+//     flex-direction: column;
+//     align-items: stretch;
+//   }
+
+//   .backup-row button {
+//     width: 100%;
+//   }
+// }
+
+// form label {
+//     margin: 1rem, 1rem 2rem;
+// }
+
+form {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.form-group {
+  display: contents;
+}
+
+label {
+  align-self: center;
+  font-weight: 600;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.error {
+  grid-column: 2;
+  color: #dc2626;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+h3,
+hr,
+.success,
+.backup-row,
+.btn-secondary,
+.btn-primary {
+  grid-column: 1 / -1;
+}
+
+.backup-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.backup-row input {
+  flex: 1;
+}
+
+button[type='submit'] {
+  justify-self: start;
+  min-width: 220px;
+  // background-color: #dc2626;
+}
+
+@media (max-width: 768px) {
+  form {
+    grid-template-columns: 1fr;
+  }
+
+  .error {
+    grid-column: 1;
+  }
+
+  label {
+    margin-bottom: 6px;
+    color: #383838;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+  }
+}
+
+/* From Uiverse.io by kosedagyazilim */
+.button {
+  display: inline-block;
+  padding: 12px 8px;
+  margin: 5px 2px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  background-image: linear-gradient(to bottom right, #00c6ff, #0072ff);
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 4px 0px #0072ff;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 0px #0072ff;
+}
+
+.button:active {
+  transform: translateY(0px);
+  box-shadow: none;
+  background-image: linear-gradient(to bottom right, #0072ff, #00c6ff);
+}
+
+.button:before,
+.button:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.button:before {
+  top: -3px;
+  left: -3px;
+  border-radius: 40px;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
+}
+
+.button:after {
+  bottom: -3px;
+  right: -3px;
+  border-radius: 40px;
+  border-bottom: 3px solid #fff;
+  border-right: 3px solid #fff;
+}
+
+.textarea {
+  background-color: #383838;
+  border: 1ex solid none;
+  border-top-width: 1.7em;
+  margin: 0;
+  padding: 0;
+  color: #383838;
+  word-wrap: break-word;
+  outline: 7px solid #383838;
+  height: 100px;
+  font-size: 17px;
+  text-align: center;
+  transition: all 1s;
+  max-width: 230px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.textarea:hover {
+  border-top-width: 0.2em;
+  background-color: #f1e8e8;
+}
+
+.textarea:focus {
+  border-top-width: 0.2em;
+  background-color: #f1e8e8;
+}
+
+/* From Uiverse.io by Alaner-xs */
+.input {
+  background-color: #383838;
+  border: 1ex solid none;
+  border-top-width: 1.7em;
+  margin: 0;
+  padding: 0;
+  color: #383838;
+  word-wrap: break-word;
+  outline: 7px solid #383838;
+  height: 30px;
+  font-size: 17px;
+  text-align: center;
+  transition: all 1s;
+  max-width: 230px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.input:hover {
+  border-top-width: 0.2em;
+  background-color: #f1e8e8;
+}
+
+.input:focus {
+  border-top-width: 0.2em;
+  background-color: #f1e8e8;
+}

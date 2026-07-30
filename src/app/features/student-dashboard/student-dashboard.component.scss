@@ -1,0 +1,188 @@
+// :host {
+//   display: block;
+//   padding: 2rem;
+//   background: #f5f7fb;
+//   min-height: 100vh;
+// }
+
+// .catalog-title {
+//   margin-bottom: 1.5rem;
+//   color: #1f2937;
+//   font-size: 2rem;
+//   font-weight: 700;
+// }
+
+// .grid {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+//   gap: 1.5rem;
+// }
+
+// .status-card,
+// .empty-state {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   padding: 2rem;
+//   margin-top: 2rem;
+//   border-radius: 12px;
+//   text-align: center;
+//   background: #fff;
+//   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+// }
+
+// .loading p,
+// .empty-state p {
+//   color: #6b7280;
+//   margin-top: 1rem;
+// }
+
+// .error {
+//   border-left: 5px solid #dc2626;
+// }
+
+// .error h3 {
+//   color: #dc2626;
+//   margin-bottom: 0.5rem;
+// }
+
+// .error p {
+//   color: #6b7280;
+// }
+
+// .spinner {
+//   width: 42px;
+//   height: 42px;
+//   border: 4px solid #e5e7eb;
+//   border-top-color: #2563eb;
+//   border-radius: 50%;
+//   animation: spin 0.8s linear infinite;
+// }
+
+// @keyframes spin {
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
+
+.catalog-title {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #1f2937;
+}
+
+.table-container {
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.course-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.course-table thead {
+  background: #2563eb;
+  color: white;
+}
+
+.course-table th,
+.course-table td {
+  padding: 1rem;
+  text-align: left;
+}
+
+.course-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background 0.2s;
+}
+
+.course-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.course-table th {
+  font-weight: 600;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badge.closed {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.enroll-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.enroll-btn:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.enroll-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.empty {
+  text-align: center;
+  padding: 2rem;
+  color: #6b7280;
+}
+
+.status-card {
+  text-align: center;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.error {
+  border-left: 5px solid #dc2626;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 1rem;
+  border: 4px solid #e5e7eb;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.course-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.course-link:hover {
+  color: #4772e6;
+  text-decoration: underline;
+}
