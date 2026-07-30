@@ -21,4 +21,14 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/enrollment-form/enrollment-form').then((m) => m.EnrollmentForm),
   },
+
+  {
+    path: 'enrollments',
+    loadComponent: () =>
+      import('./features/enrollment-list/enrollment-list.component').then(
+        (m) => m.EnrollmentListComponent,
+      ),
+  },
+
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 ];
