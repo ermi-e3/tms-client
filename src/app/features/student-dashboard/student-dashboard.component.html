@@ -70,12 +70,31 @@
   </div>
 } -->
 
-<div class="dashboard-layout">
+<!-- <div class="dashboard-layout">
 
   <tms-dashboard-summary></tms-dashboard-summary>
 
   <tms-enrollment-list></tms-enrollment-list>
 
+</div> -->
+
+<div class="enrollment-dashboard">
+  <header class="enrollment-dashboard__header">
+    <div>
+      <h1>Enrollment Dashboard</h1>
+      <p>Monitor enrollment requests and approve pending students.</p>
+    </div>
+  </header>
+
+  <div class="enrollment-dashboard__layout">
+    <aside class="enrollment-dashboard__summary">
+      <tms-dashboard-summary></tms-dashboard-summary>
+    </aside>
+
+    <main class="enrollment-dashboard__list">
+      <tms-enrollment-list></tms-enrollment-list>
+    </main>
+  </div>
 </div>
 
 <h2 class="catalog-title">Course Catalog</h2>

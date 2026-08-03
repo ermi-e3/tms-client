@@ -25,10 +25,12 @@
 
 import { Component, OnInit, inject } from '@angular/core';
 import { EnrollmentStore } from '../../store/enrollment.store';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'tms-enrollment-list',
   standalone: true,
+  imports: [DatePipe],
   templateUrl: './enrollment-list.component.html',
   styleUrl: './enrollment-list.component.scss',
 })
