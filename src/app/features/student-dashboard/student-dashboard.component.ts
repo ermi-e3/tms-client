@@ -1,5 +1,7 @@
 // These are the Angular functions we need. signal() and computed() come from Angular's core.
 import { Component, signal, computed, inject } from '@angular/core';
+import { DashboardSummary } from '../dashboard-summary/dashboard-summary.component';
+import { EnrollmentListComponent } from '../enrollment-list/enrollment-list.component';
 import { CourseCard } from '../../ui/course-card/course-card';
 import { Course } from '../../models/course.model';
 import { rxResource } from '@angular/core/rxjs-interop';
@@ -18,7 +20,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-student-dashboard',
   standalone: true,
-  imports: [CourseCard, RouterLink], // This tells Angular: "I use Course CardComponent in my template"
+  imports: [CourseCard, RouterLink, DashboardSummary, EnrollmentListComponent], // This tells Angular: "I use Course CardComponent in my template"
   templateUrl: './student-dashboard.component.html',
   styleUrl: './student-dashboard.component.scss',
 })
