@@ -119,3 +119,42 @@
     transform: rotate(360deg);
   }
 }
+
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.approve-btn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #16a34a;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.approve-btn:hover {
+  background: #15803d;
+}
+
+.reject-btn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #dc2626;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.reject-btn:hover {
+  background: #b91c1c;
+}
+
+.completed {
+  color: #6b7280;
+  font-style: italic;
+}

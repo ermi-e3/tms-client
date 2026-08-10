@@ -27,11 +27,18 @@ export class EnrollmentService {
 
   private baseUrl = 'http://localhost:5022/api/v2/enrollments';
 
+
+  
   getAll(): Observable<Enrollment[]> {
     return this.http.get<Enrollment[]>(this.baseUrl);
+    
   }
 
-  approve(id: string): Observable<void> {
+  approve(id: number): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/${id}/approve`, {});
+  }
+
+  reject(id: number): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/${id}/reject`, {});
   }
 }

@@ -6,14 +6,12 @@ import { Course } from './models/course.model';
   selector: 'app-root',
   imports: [RouterOutlet],
   // templateUrl: './app.html',
-  templateUrl: './app.component.html',
+  templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-
 export class App {
   protected readonly title = signal('tms-client');
 }
-
 
 // export class App {
 //   selectedCourse = signal<Course | null>(null);

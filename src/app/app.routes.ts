@@ -8,7 +8,13 @@ export const routes: Routes = [
         (m) => m.InstructorDashboardComponent,
       ),
   },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  {
+    path: 'enrollments',
+    loadComponent: () =>
+      import('./features/enrollment-list/enrollment-list.component').then(
+        (m) => m.EnrollmentListComponent,
+      ),
+  },
 
   {
     path: 'courses/:id',
@@ -22,13 +28,6 @@ export const routes: Routes = [
       import('./features/enrollment-form/enrollment-form').then((m) => m.EnrollmentForm),
   },
 
-  {
-    path: 'enrollments',
-    loadComponent: () =>
-      import('./features/enrollment-list/enrollment-list.component').then(
-        (m) => m.EnrollmentListComponent,
-      ),
-  },
 
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 ];

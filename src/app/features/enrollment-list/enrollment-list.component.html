@@ -1,99 +1,51 @@
-<!-- @if (store.isLoading()) {
+<h2>Enrollment Records</h2>
+@if (store.isLoading()) {
   <p>Loading enrollments...</p>
 }
-
-@for (enrollment of store.entities(); track enrollment.id) {
-  <div class="enrollment-card">
-    <span>
-      {{ enrollment.studentName }} —
-      {{ enrollment.courseTitle }}
-    </span>
-
-    <span class="status">
-      {{ enrollment.status }}
-    </span>
-
-    @if (enrollment.status === 'Pending') {
-      <button (click)="onApprove(enrollment.id)">Approve</button>
-    }
-  </div>
-}
-
 @if (store.error()) {
   <p class="error">{{ store.error() }}</p>
-} -->
+}
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <ng-container matColumnDef="studentName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Student</th>
+    <td mat-cell *matCellDef="let row">{{ row.studentName }}</td>
+  </ng-container>
+  <ng-container matColumnDef="courseTitle">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Course</th>
+    <td mat-cell *matCellDef="let row">{{ row.courseTitle }}</td>
+  </ng-container>
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+    <td mat-cell *matCellDef="let row">
+      <span class="status-badge" [class]="row.status.toLowerCase()">
+        {{ row.status }}
+      </span>
+    </td>
+  </ng-container>
+  <!-- <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let row">
+      @if (row.status === 'Pending') {
+        <button (click)="store.approveEnrollment(row.id)">Approve</button>
+      }
+    </td>
+  </ng-container> -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
 
-<div class="enrollment-container">
-  <div class="header">
-    <h2>Enrollment Management</h2>
-    <span class="count"> Total: {{ store.entities().length }} </span>
-  </div>
+    <td mat-cell *matCellDef="let row">
+      @if (row.status === 'Pending') {
+        <div class="actions">
+          <button class="approve-btn" (click)="onApprove(row.id)">Approve</button>
 
-  @if (store.isLoading()) {
-    <div class="loading">
-      <div class="spinner"></div>
-      <p>Loading enrollments...</p>
-    </div>
-  } @else {
-    @if (store.entities().length > 0) {
-      <table class="enrollment-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Student</th>
-            <th>Course</th>
-            <th>Status</th>
-            <th>Enrolled At</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          @for (enrollment of store.entities(); track enrollment.id) {
-            <tr>
-              <td>#{{ enrollment.id }}</td>
-
-              <td>{{ enrollment.studentName }}</td>
-
-              <td>{{ enrollment.courseTitle }}</td>
-
-              <td>
-                <span
-                  class="status"
-                  [class.pending]="enrollment.status === 'Pending'"
-                  [class.approved]="enrollment.status === 'Approved'"
-                  [class.rejected]="enrollment.status === 'Rejected'"
-                >
-                  {{ enrollment.status }}
-                </span>
-              </td>
-
-              <td>
-                {{ enrollment.enrolledAt | date: 'medium' }}
-              </td>
-
-              <td>
-                @if (enrollment.status === 'Pending') {
-                  <button class="approve-btn" (click)="onApprove(enrollment.id)">✓ Approve</button>
-                } @else {
-                  <span class="completed"> No Action </span>
-                }
-              </td>
-            </tr>
-          }
-        </tbody>
-      </table>
-    } @else {
-      <div class="empty-state">
-        <h3>No Enrollments</h3>
-        <p>There are currently no enrollments to display.</p>
-      </div>
-    }
-  }
-
-  @if (store.error()) {
-    <div class="error-card">
-      {{ store.error() }}
-    </div>
-  }
-</div>
+          <button class="reject-btn" (click)="onReject(row.id)">Reject</button>
+        </div>
+      } @else {
+        <span class="completed"> No Action </span>
+      }
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[10, 25, 50]" showFirstLastButtons> </mat-paginator>
