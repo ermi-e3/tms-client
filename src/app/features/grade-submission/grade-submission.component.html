@@ -1,0 +1,90 @@
+<div class="max-w-xl mx-auto p-6">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title> Grade Submission </mat-card-title>
+
+      <mat-card-subtitle> Submit a student's course grade </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="gradeForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-4 mt-6">
+        <!-- Student ID -->
+
+        <mat-form-field appearance="outline">
+          <mat-label>Student ID</mat-label>
+
+          <input matInput type="number" formControlName="studentId" />
+
+          @if (
+            gradeForm.controls.studentId.touched &&
+            gradeForm.controls.studentId.hasError('required')
+          ) {
+            <mat-error> Student ID is required. </mat-error>
+          }
+
+          @if (
+            gradeForm.controls.studentId.touched && gradeForm.controls.studentId.hasError('min')
+          ) {
+            <mat-error> Student ID must be greater than 0. </mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Course ID -->
+
+        <mat-form-field appearance="outline">
+          <mat-label>Course ID</mat-label>
+
+          <input matInput type="number" formControlName="courseId" />
+
+          @if (
+            gradeForm.controls.courseId.touched && gradeForm.controls.courseId.hasError('required')
+          ) {
+            <mat-error> Course ID is required. </mat-error>
+          }
+
+          @if (gradeForm.controls.courseId.touched && gradeForm.controls.courseId.hasError('min')) {
+            <mat-error> Course ID must be greater than 0. </mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Score -->
+
+        <mat-form-field appearance="outline">
+          <mat-label>Score</mat-label>
+
+          <input matInput type="number" formControlName="score" />
+
+          @if (gradeForm.controls.score.touched && gradeForm.controls.score.hasError('required')) {
+            <mat-error> Score is required. </mat-error>
+          }
+
+          @if (gradeForm.controls.score.touched && gradeForm.controls.score.hasError('min')) {
+            <mat-error> Score cannot be below 0. </mat-error>
+          }
+
+          @if (gradeForm.controls.score.touched && gradeForm.controls.score.hasError('max')) {
+            <mat-error> Score cannot be above 100. </mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Submit -->
+
+        <button mat-raised-button type="submit" [disabled]="isSubmitting || gradeForm.invalid">
+          @if (isSubmitting) {
+            Submitting...
+          } @else {
+            Submit Grade
+          }
+        </button>
+      </form>
+
+      <!-- Status -->
+
+      @if (submissionStatus) {
+        <div class="mt-4 p-4 rounded">
+          {{ submissionStatus }}
+        </div>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>

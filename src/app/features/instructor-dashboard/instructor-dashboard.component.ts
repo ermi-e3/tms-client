@@ -23,5 +23,6 @@ export class InstructorDashboardComponent implements OnInit {
   store = inject(EnrollmentStore);
   ngOnInit() {
     this.store.loadEnrollments();
+    this.store.listenForLiveUpdates();
   }
 }
