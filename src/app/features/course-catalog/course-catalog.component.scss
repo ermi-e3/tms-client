@@ -1,4 +1,5 @@
 
+
 .catalog {
   padding: 2rem;
 }
@@ -24,12 +25,20 @@ h1 {
   margin-top: 0;
 }
 
+.status-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
 .available,
 .full {
   display: inline-block;
-  margin-top: 1rem;
   padding: 0.4rem 0.7rem;
   border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .available {
@@ -40,6 +49,37 @@ h1 {
 .full {
   background: #ffebee;
   color: #c62828;
+}
+
+.delete-button {
+  display: inline-block;
+  padding: 0.4rem 0.7rem;
+  border: none;
+  border-radius: 5px;
+
+  background: #ffebee;
+  color: #c62828;
+
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+}
+
+.delete-button:hover {
+  background: #ffcdd2;
+}
+
+.delete-button:active {
+  transform: translateY(1px);
+}
+
+.delete-button:focus-visible {
+  outline: 2px solid #c62828;
+  outline-offset: 2px;
 }
 
 .error {
