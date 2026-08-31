@@ -34,15 +34,15 @@
         <mat-form-field appearance="outline">
           <mat-label>Course ID</mat-label>
 
-          <input matInput type="number" formControlName="courseId" />
+          <input matInput type="number" formControlName="assessmentId" />
 
           @if (
-            gradeForm.controls.courseId.touched && gradeForm.controls.courseId.hasError('required')
+            gradeForm.controls.assessmentId.touched && gradeForm.controls.assessmentId.hasError('required')
           ) {
             <mat-error> Course ID is required. </mat-error>
           }
 
-          @if (gradeForm.controls.courseId.touched && gradeForm.controls.courseId.hasError('min')) {
+          @if (gradeForm.controls.assessmentId.touched && gradeForm.controls.assessmentId.hasError('min')) {
             <mat-error> Course ID must be greater than 0. </mat-error>
           }
         </mat-form-field>

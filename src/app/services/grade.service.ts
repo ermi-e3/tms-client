@@ -2,9 +2,15 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+// export interface GradePayload {
+//   studentId: number;
+//   courseId: number;
+//   score: number;
+// }
+
 export interface GradePayload {
   studentId: number;
-  courseId: number;
+  assessmentId: number;
   score: number;
 }
 
@@ -14,8 +20,14 @@ export interface GradePayload {
 export class GradeService {
   private http = inject(HttpClient);
 
-  postGrade(payload: GradePayload): Observable<{ id: string; success: boolean }> {
-    return this.http.post<{ id: string; success: boolean }>('/api/grades', payload);
+  //   postGrade(payload: GradePayload): Observable<{ id: string; success: boolean }> {
+  //     return this.http.post<{ id: string; success: boolean }>('/api/grades', payload);
+  //   }
+  postGrade(payload: GradePayload) {
+    return this.http.post<{ id: string; success: boolean }>(
+      'http://localhost:5022/api/v2/grades',
+      payload,
+    );
   }
 }
 
