@@ -87,6 +87,7 @@
 //   }
 // }
 import { Injectable, inject, signal } from '@angular/core';
+import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 
@@ -109,10 +110,11 @@ export class AuthService {
   readonly currentUser = signal<TmsUser | null>(null);
   readonly isAuthenticated = signal(false);
 
-  private readonly baseUrl = '/api/v2/auth';
+  // private readonly baseUrl = '/api/v2/auth';
+  private readonly baseUrl = `${environment.apiUrl}/auth`;
 
   async initializeXsrf(): Promise<void> {
-    await firstValueFrom(this.http.get<void>(`${this.baseUrl}/xsrf`));
+    await firstValueFrom(this.http.get<void>(`${this.baseUrl}/xsrf`));  
   }
 
   async login(credentials: LoginRequest): Promise<void> {

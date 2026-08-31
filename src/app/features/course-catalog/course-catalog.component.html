@@ -1,0 +1,37 @@
+
+<div class="catalog">
+  <h1>Course Catalog</h1>
+
+  @if (isLoading()) {
+    <p>Loading courses...</p>
+  }
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  @if (!isLoading() && courses().length === 0) {
+    <p>No courses found.</p>
+  }
+
+  <div class="course-grid">
+    @for (course of courses(); track course.id) {
+      <div class="course-card">
+        <h2>{{ course.title }}</h2>
+
+        <p><strong>Code:</strong> {{ course.code }}</p>
+
+        <p>
+          <strong>Capacity:</strong>
+          {{ course.enrollmentCount }} / {{ course.maxCapacity }}
+        </p>
+
+        @if (course.enrollmentCount >= course.maxCapacity) {
+          <span class="full">Full</span>
+        } @else {
+          <span class="available">Available</span>
+        }
+      </div>
+    }
+  </div>
+</div>

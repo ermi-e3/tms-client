@@ -56,6 +56,7 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { routes } from './app.routes';
 import { credentialsInterceptor } from './interceptors/credentials.interceptor';
+import { errorInterceptor } from './interceptors/error.interceptor';
 import { AuthService } from './services/auth.service';
 
 export const appConfig: ApplicationConfig = {
@@ -64,8 +65,15 @@ export const appConfig: ApplicationConfig = {
 
     provideRouter(routes, withComponentInputBinding()),
 
+    // provideHttpClient(
+    //   withInterceptors([credentialsInterceptor]),
+    //   withXsrfConfiguration({
+    //     cookieName: 'XSRF-TOKEN',
+    //     headerName: 'X-XSRF-TOKEN',
+    //   }),
+    // ),
     provideHttpClient(
-      withInterceptors([credentialsInterceptor]),
+      withInterceptors([credentialsInterceptor, errorInterceptor]),
       withXsrfConfiguration({
         cookieName: 'XSRF-TOKEN',
         headerName: 'X-XSRF-TOKEN',
