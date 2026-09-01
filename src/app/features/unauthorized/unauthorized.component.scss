@@ -1,0 +1,53 @@
+
+.unauthorized-page {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: #f5f5f5;
+}
+
+.unauthorized-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 3rem 2rem;
+  text-align: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+.icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  color: #c62828;
+}
+
+p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.hint {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 2rem;
+}
+
+a {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  background: #1976d2;
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  background: #1565c0;
+}

@@ -1,4 +1,8 @@
 import { Routes } from '@angular/router';
+import { roleGuard } from './guards/role.guard';
+import { CourseCatalogComponent } from './features/course-catalog/course-catalog.component';
+import { UnauthorizedComponent } from './features/unauthorized/unauthorized.component';
+import { AdminCourseListComponent } from './features/admin-course-list/admin-course-list.component';
 
 export const routes: Routes = [
   {
@@ -47,5 +51,16 @@ export const routes: Routes = [
       (m) => m.CourseCatalogComponent,
     ),
 },
+{
+path: 'admin/courses',
+component: AdminCourseListComponent,
+canActivate: [roleGuard('Admin')],
+},
+
+{
+    path: 'unauthorized',
+    component: UnauthorizedComponent,
+  },
+
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 ];

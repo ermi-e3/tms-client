@@ -58,6 +58,7 @@ import { routes } from './app.routes';
 import { credentialsInterceptor } from './interceptors/credentials.interceptor';
 import { errorInterceptor } from './interceptors/error.interceptor';
 import { AuthService } from './services/auth.service';
+import { jwtInterceptor } from './interceptors/jwt.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -72,18 +73,26 @@ export const appConfig: ApplicationConfig = {
     //     headerName: 'X-XSRF-TOKEN',
     //   }),
     // ),
+    // provideHttpClient(
+    //   withInterceptors([credentialsInterceptor, errorInterceptor]),
+    //   withXsrfConfiguration({
+    //     cookieName: 'XSRF-TOKEN',
+    //     headerName: 'X-XSRF-TOKEN',
+    //   }),
+    // ),
+
     provideHttpClient(
-      withInterceptors([credentialsInterceptor, errorInterceptor]),
+      withInterceptors([credentialsInterceptor, jwtInterceptor, errorInterceptor]),
       withXsrfConfiguration({
         cookieName: 'XSRF-TOKEN',
         headerName: 'X-XSRF-TOKEN',
       }),
     ),
 
-    provideAppInitializer(() => {
-      const authService = inject(AuthService);
+    // provideAppInitializer(() => {
+    //   const authService = inject(AuthService);
 
-      return authService.initializeXsrf();
-    }),
+    //   return authService.initializeXsrf();
+    // }),
   ],
 };
