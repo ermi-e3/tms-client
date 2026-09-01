@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="login-container">
   <div class="login-card">
     <h1>TMS Login</h1>
@@ -58,4 +58,108 @@
       <p>Password: <code>Password123!</code></p>
     </div>
   </div>
+</div> -->
+
+<!-- <div class="login-container">
+  <div class="login-card">
+    <h1>Login</h1>
+
+    @if (error()) {
+      <div class="error">
+        {{ error() }}
+      </div>
+    }
+
+    <form (ngSubmit)="onLogin()">
+      <div class="form-group">
+        <label for="email">Email</label>
+
+        <input
+          id="email"
+          type="email"
+          name="email"
+          [ngModel]="email()"
+          (ngModelChange)="email.set($event)"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+
+        <input
+          id="password"
+          type="password"
+          name="password"
+          [ngModel]="password()"
+          (ngModelChange)="password.set($event)"
+          required
+        />
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div> -->
+
+
+
+<div class="login-container">
+  <div class="login-card">
+
+    <h1>Login</h1>
+
+    @if (error()) {
+      <div class="error" role="alert">
+        {{ error() }}
+      </div>
+    }
+
+    <form (ngSubmit)="onLogin()">
+
+      <div class="form-group">
+        <label for="email">Email</label>
+
+        <input
+          id="email"
+          type="email"
+          name="email"
+          [ngModel]="email()"
+          (ngModelChange)="email.set($event)"
+          required
+          autocomplete="email"
+          [disabled]="isLoading()"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+
+        <input
+          id="password"
+          type="password"
+          name="password"
+          [ngModel]="password()"
+          (ngModelChange)="password.set($event)"
+          required
+          autocomplete="current-password"
+          [disabled]="isLoading()"
+        />
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="isLoading()"
+      >
+        @if (isLoading()) {
+          Logging in...
+        } @else {
+          Login
+        }
+      </button>
+
+    </form>
+
+  </div>
 </div>
+

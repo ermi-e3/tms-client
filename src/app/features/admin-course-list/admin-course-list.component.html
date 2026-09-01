@@ -1,0 +1,45 @@
+<div class="admin-courses">
+  <h1>Admin Course Management</h1>
+
+  @if (store.isLoading()) {
+    <p>Loading courses...</p>
+  }
+
+  @if (store.error()) {
+    <p class="error">
+      {{ store.error() }}
+    </p>
+  }
+
+  @if (!store.isLoading() && store.entities().length === 0) {
+    <p>No courses found.</p>
+  }
+
+  <div class="course-grid">
+    @for (course of store.entities(); track course.id) {
+      <div class="course-card">
+        <h2>{{ course.title }}</h2>
+
+        <p>
+          <strong>Code:</strong>
+          {{ course.code }}
+        </p>
+
+        <p>
+          <strong>Capacity:</strong>
+          {{ course.enrollmentCount }}
+          /
+          {{ course.maxCapacity }}
+        </p>
+
+        @if (course.enrollmentCount >= course.maxCapacity) {
+          <span class="full">Full</span>
+        } @else {
+          <span class="available">Available</span>
+        }
+
+        <button type="button" (click)="onDelete(course.id)">Delete Course</button>
+      </div>
+    }
+  </div>
+</div>
